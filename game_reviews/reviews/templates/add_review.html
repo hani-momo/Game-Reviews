@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add review on {{ game.title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            color: #4CAF50; 
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 20px auto; 
+        }
+        button {
+            background-color: #4CAF50; 
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049; 
+        }
+        .form-group {
+            margin-bottom: 15px; 
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold; 
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; 
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #4CAF50; 
+            outline: none; 
+        }
+        textarea {
+            resize: vertical; 
+            min-height: 100px; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Add review on "{{ game.title }}"</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit review</button>
+    </form>
+
+    <p>
+        <a href="{% url 'home' %}">Go back to games list</a>
+    </p>
+</body>
+</html>

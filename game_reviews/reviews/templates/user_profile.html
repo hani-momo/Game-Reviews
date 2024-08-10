@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ user.username }} - Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .profile-header img {
+            width: 100px; 
+            height: 100px; 
+            border-radius: 50%; 
+            margin-right: 20px;
+        }
+        h2 {
+            margin-top: 10px;
+        }
+        .review-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="{{ user.userprofile.avatar.url }}" alt="{{ user.username }}'s profile picture">
+            <h1>{{ user.username }}</h1>
+        </div>
+
+        <h2>Reviews</h2>
+        {% if reviews %}
+            <ul>
+                {% for review in reviews %}
+                    <li class="review-item">
+                        <strong>{{ review.game.title }}</strong>: 
+                        <em>(Rating: {{ review.rating }})</em>
+                        <br>
+                        <em>{{ review.text }}</em>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No reviews yet.</p>
+        {% endif %}
+
+        
+        <br>
+        <a href="{% url 'home' %}">Back to Games List</a>
+    </div>
+</body>
+</html>

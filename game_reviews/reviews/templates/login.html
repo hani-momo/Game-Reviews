@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign in</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4; 
+            color: #333;
+        }
+        h1 {
+            color: #4CAF50; 
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        .form-container {
+            max-width: 400px;
+            background-color: #fff; 
+            padding: 15px;
+            border-radius: 5px; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+            margin-bottom: 20px; 
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            width: 100%; 
+        }
+        button:hover {
+            background-color: #45a049; 
+        }
+        p {
+            margin-top: 15px; 
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none; 
+        }
+        a:hover {
+            text-decoration: underline; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Sign in</h1>
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Log in</button>
+        </form>
+
+        <p>Don't have an account yet? <a href="{% url 'register' %}">Sign up</a></p>
+    </div>
+</body>
+</html>

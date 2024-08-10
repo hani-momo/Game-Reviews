@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ game.title }} - Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            color: #4CAF50; 
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #333;
+        }
+        .game-info {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            max-width: 500px; 
+        }
+        .review-container {
+            max-width: 600px; 
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .review-item {
+            margin-bottom: 15px; 
+            padding: 10px; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            background-color: #f9f9f9;
+        }
+        .review-item a {
+            text-decoration: none;
+            color: #4CAF50;
+        }
+        .review-item a:hover {
+            text-decoration: underline;
+        }
+        .stats {
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #4CAF50; 
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: #45a049; 
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ game.title }}</h1>
+
+    <div class="game-info">
+        <p><strong>Genre:</strong> {{ game.genre }}</p>
+        <p><strong>Description:</strong> {{ game.description }}</p>
+        <p><strong>Developer:</strong> {{ game.developer }}</p> 
+        <p><strong>Release Date:</strong> {{ game.release_date }}</p> 
+    </div>
+
+    <h2>Reviews</h2>
+    <div class="stats">
+        <p><strong>Total Reviews:</strong> {{ total_reviews }}</p>
+        <p><strong>Positive Reviews:</strong> {{ positive_percentage|floatformat:1 }}% ({{ positive_reviews }})</p>
+        <p><strong>Negative Reviews:</strong> {{ negative_percentage|floatformat:1 }}% ({{ negative_reviews }})</p>
+    </div>
+
+    {% if reviews %}
+        <div class="review-container"> 
+            <ul>
+                {% for review in reviews %}
+                    <li class="review-item"> 
+                        <a href="{% url 'user_profile' review.author.username %}">{{ review.author.username }}</a>: 
+                        <em>(Rating: {{ review.rating }})</em>
+                        <br>
+                        <em>{{ review.text }}</em>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% else %}
+        <p>No reviews yet.</p>
+    {% endif %}
+
+    <a href="{% url 'add_review' game.id %}" class="btn">Add a Review</a><br><br>
+    
+    <a href="{% url 'home' %}" class="btn">Back to Games List</a>
+</body>
+</html>

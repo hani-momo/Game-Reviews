@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            color: #4CAF50; 
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        p {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h2 {
+            margin-top: 30px;
+            color: #333;
+        }
+        ul {
+            list-style-type: none; 
+            padding: 0;
+        }
+        li {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        a {
+            text-decoration: none;
+            color: #4CAF50; 
+        }
+        a:hover {
+            text-decoration: underline; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Game Reviews!</h1>
+    <p>
+        Your go-to place for sharing and reading reviews on the latest games.<br>
+        Discover new titles, leave your feedback, tell others about some new games they don't know about,<br>
+        and help fellow gamers make informed decisions!
+    </p>
+
+    <h2>Games list</h2>
+    <ul>
+        {% for game in games %}
+            <li>
+                <a href="{% url 'game_profile' game.id %}">{{ game.title }}</a> - {{ game.genre }}
+                <a href="{% url 'add_review' game.id %}"> Leave your review on this game</a>
+            </li>
+        {% empty %}
+            <li>No games yet. Be the first to tell us about a game we don't know!</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'add_game' %}">Add a new game profile</a><br>
+    <a href="{% url 'register' %}">Sign up</a> |
+    <a href="{% url 'login' %}">Log in</a><br>
+    <a href="{% url 'logout' %}">Log out</a><br>
+</body>
+</html>

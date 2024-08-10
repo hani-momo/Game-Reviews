@@ -1,0 +1,4 @@
+gr_env/
+*.sqlite3
+*.pyc
+__pycache__/
