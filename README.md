@@ -1,4 +1,4 @@
-A beta version of a personal project, kinda nervous haha
+A beta version
 
 # Game-Reviews
 A web application designed to collect and display reviews for new games. Users can register, add games, and leave their feedback, allowing others to gather insights on new titles and their ratings.
@@ -47,41 +47,35 @@ A web application designed to collect and display reviews for new games. Users c
 
 ## Stack Used
 
-- **Backend**: Python, Django
+- **Backend**: Python - Django
 - **Frontend**: HTML, CSS
-- **Database**: SQLite3 for storing user data, game information, and reviews.
+- **Database**: SQLite3 (as test) for storing user data, game information, and reviews.
+
 
 ## How to Run the Project
-
 1. Clone the repository:
    ```bash
    git clone https://github.com/hani-momo/Game-Reviews
 2. Change to the project directory:
    ```bash
-   cd GameReviews
+   cd Game-Reviews
 3. Create a virtual environment and activate it:
    ```bash
    python -m venv gr_env
-   source gr_env/bin/activate
-4. Create a virtual environment:
-   ```bash
-   python -m venv gr_env
+   source gr_env/bin/activate  # On Windows: gr_env\Scripts\activate
 5. Install the required packages, dependencies:
    ```bash
    pip install -r requirements.txt
 6. Run migrations:
    ```bash
-   pithon manage.py
-7. Create a superuser (optional):
+   pithon manage.py migrate
+7. Create a superuser (opt.):
    ```bash
    python manage.py createsuperuser
-8. Start the server (finally):
+8. Start the server:
    ```bash
    python manage.py runserver
-9. Go to http://127.0.0.1:8000/ in your browser
-
+9. Go to http://127.0.0.1:8000/
 10. To deactivate the venv (optional):
     ```bash
     deactivate
-    
-Thanks for your time, hope you enjoy!
